@@ -14,9 +14,9 @@ int checkwin();
 int main()
 {
 	cout << "Player 1, Enter your name: ";
-	cin >> name1;
+	getline(cin, name1);
 	cout << "Player 2, Enter your name: ";
-	cin >> name2;
+	getline(cin, name2);
 	//
 	int player = 1, choice, game = 1;
 	int i = 1;
