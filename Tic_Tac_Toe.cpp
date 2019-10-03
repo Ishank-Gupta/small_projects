@@ -4,7 +4,9 @@
 
 using namespace std;
 
-char place[10] = { 'o', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+char place[10] = { 'o', '1', '2', '3', '4', '5', '6', '7', '8', '9' },
+temp[10] = { 'o', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+
 set<int> num;
 string name1 = "", name2 = "";
 void board();
@@ -20,9 +22,11 @@ int main()
 	//
 	int player = 1, choice, game = 1;
 	int i = 1;
-	for (int i = 1; i < 10; ++i)
-		num.insert(i);
+
 	do {
+		for (int i = 1; i < 10; ++i)
+			num.insert(i);
+		player = 1;
 		do
 		{
 			board();
@@ -51,16 +55,21 @@ int main()
 		{
 			--player;
 			if (player == 1)
-				cout << "==>\a\t" << name1.c_str() << " win \n";
+				cout << "==>\a " << name1.c_str() << " win \n";
 			else
-				cout << "==>\a\t" << name2.c_str() << " win \n";
+				cout << "==>\a " << name2.c_str() << " win \n";
 		}
 		else
-			cout << "==>\a\tGame draw\n";
+			cout << "==>\a Game draw\n";
 		system("pause");
 		system("cls");
 		cout << "Do you want to play again?\n1 --> Yes\n2 --> No\nEnter your choice: ";
 		cin >> game;
+		if (game == 1)
+		{
+			for (int i = 1; i < 10; ++i)
+				place[i] = temp[i];
+		}
 	} while (game == 1);
 	system("pause");
 }
@@ -87,13 +96,13 @@ int checkwin()
 	if (num.empty())
 		return 0;
 	else if ((place[1] == place[2] && place[2] == place[3])
-		  || (place[4] == place[5] && place[5] == place[6])
-		  || (place[7] == place[8] && place[8] == place[9])
-		  || (place[1] == place[4] && place[4] == place[7])
-		  || (place[2] == place[5] && place[5] == place[8])
-		  || (place[3] == place[6] && place[6] == place[9])
-		  || (place[1] == place[5] && place[5] == place[9])
-		  || (place[3] == place[5] && place[5] == place[7]))
+			|| (place[4] == place[5] && place[5] == place[6])
+			|| (place[7] == place[8] && place[8] == place[9])
+			|| (place[1] == place[4] && place[4] == place[7])
+			|| (place[2] == place[5] && place[5] == place[8])
+			|| (place[3] == place[6] && place[6] == place[9])
+			|| (place[1] == place[5] && place[5] == place[9])
+			|| (place[3] == place[5] && place[5] == place[7]))
 		return 1;
 	else
 		return -1;
