@@ -23,7 +23,6 @@ public:
     return pointer;
   }
 
-private:
   void GetCursorPosition()
   {
     POINT point;
@@ -99,7 +98,6 @@ To stop the process close the console window.\n";
       ++count;
     }
   }
-  friend int main();
 };
 
 
